@@ -1,0 +1,71 @@
+{{extend '../_layouts/home.html'}}
+
+{{block 'title'}}{{'物流实验室仓库管理系统 - 留言'}}{{/block}}
+
+{{block 'body'}}
+
+<header class="bar bar-nav">
+  <a href="javascript:history.back(-1);" class="icon icon-left pull-left"></a>
+  <h1 class="title">留言专区</h1>
+</header>
+
+<section class="container" style="margin-top:50px;">
+{{if user}}
+	<form id="login_form">
+	  <div class="form-group">
+		<label>昵称</label>
+		<input type="text" value="{{user.nickname}}" name="nickname" class="form-control" readonly>
+	  </div>
+	  <div class="form-group">
+		<label >邮箱</label>
+		<input type="email" value="{{user.email}}" class="form-control" name="email" readonly>
+	  </div>
+	  <div class="form_group">
+		<label >分类</label>
+		<select class="form-control" name="select" autofocus>
+			<option value="/public/img/control.jpg">物流实验室控制中心</option>
+			<option value="/public/img/warehouse.jpg">物流实验室存储中心</option>
+			<option value="/public/img/transform.jpg">物流实验室传输中心</option>
+		</select>
+	  </div>
+	  <div class="form-group">
+		<label >留言</label>
+		<textarea rows="3" cols="2" type="text" name="message" class="form-control" placeholder="请输入留言。。" autofocus></textarea>
+	  </div>
+	  <button type="submit" class="btn btn-success btn-block">发表</button>
+	  <button type="reset" class="btn btn-success btn-block">清空</button>
+	</form>
+<script>
+ $('#login_form').on('submit', function (e) {
+      e.preventDefault();
+      var formData = $(this).serialize();
+	  //console.log(formData);
+      //console.log($.ajax({url: '/topics/new', type: 'post', data: formData, dataType: 'json'}))
+      $.ajax({
+        url: '/topics/new',
+        type: 'post',
+        data: formData,
+        dataType: 'json',
+        success: function (data) {
+		console.log(data);
+          var err_code = data.err_code
+          if (err_code === 0) {
+            // window.alert('注册成功！')
+            // 服务端重定向针对异步请求无效
+             window.location.href = '/topics/show'
+          } else if (err_code === 500) {
+            window.alert('服务器忙，请稍后重试！')
+          }
+        }
+      })
+    })
+</script>
+
+{{else if !user}}
+
+<div class="content" style="margin-top:50px">请先登录或注册账号！</div>
+
+{{/if}}
+
+</section>
+{{/block}}

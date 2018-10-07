@@ -1,0 +1,48 @@
+{{extend '../_layouts/home.html'}}
+
+{{block 'title'}}{{'物流实验室仓库管理系统 - 留言'}}{{/block}}
+
+{{block 'head'}}
+<link rel="stylesheet" href="/public/css/markdown-github.css">
+<style>
+  .panel .panel-heading .action i {
+    margin-right: 10px;
+  }
+</style>
+{{/block}}
+
+{{block 'body'}}
+<header class="bar bar-nav">
+  <a href="javascript:history.back(-1);" class="icon icon-left pull-left"></a>
+  <a href="/topics/new" class="icon icon-edit pull-right"></a>
+  <h1 class="title">留言专区</h1>
+</header>
+<section class="container" style="margin-top: 50px">
+{{each topic}}
+  <div class="card">
+    <div class="card-header">{{$value.nickname}}留言:</div>
+    <div class="card-content">
+      <div class="list-block media-list">
+        <ul>
+          <li class="item-content">
+            <div class="item-media">
+              <img src="{{$value.select}}" width="44">
+            </div>
+            <div class="item-inner">
+              <!--<div class="item-title-row">
+                <div class="item-title">{{$value.nickname}}</div>
+              </div>-->
+              <div class="item-subtitle">{{$value.message}}</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span>{{$value.created_time}}</span>
+      <span>0 评论</span>
+    </div>
+  </div>
+   {{/each}}
+</section>
+{{/block}}

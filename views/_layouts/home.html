@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+  <title>{{block 'title'}}默认标题{{/block}}</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+  <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+  {{block 'head'}}{{/block}}
+</head>
+
+<body>
+
+  <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+  <div class="page-group">
+    <!-- 单个page ,第一个.page默认被展示-->
+    <div class="page">
+      <!-- 标题栏 -->
+      <header class="bar bar-nav">
+        <a class="icon icon-me pull-left open-panel"></a>
+        <h1 class="title">物流实验室仓库管理系统</h1>
+      </header>
+
+      <!-- 工具栏 -->
+      <nav id="nav" class="bar bar-tab">
+        <a class="tab-item external" href="/">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">首页</span>
+        </a>
+        <a class="tab-item external" href="/topics/show">
+          <span class="icon icon-message"></span>
+          <span class="tab-label">留言</span>
+        </a>
+        <a class="tab-item external" href="/settings">
+          <span class="icon icon-settings"></span>
+          <span class="tab-label">设置</span>
+        </a>
+      </nav>
+
+      <!-- 这里是页面内容区 -->
+      <div class="content">
+        {{block 'body'}}{{/block}}
+      </div>
+    </div>
+
+  </div>
+
+   <!-- Left Panel with Reveal effect -->
+	  <div class="panel panel-left panel-reveal">
+		{{if user}}
+		<div class="content-block">
+		  <p><a href="/topics/show" class="button">关于我们</a></p>
+		  <p><a href="/topics/new" class="button">联系我们</a></p>
+		  <p><a href="/loginout" class="button button-danger">退出</a></p>
+		  <!-- Click on link with "close-panel" class will close panel -->
+		  <p><a href="#" class="close-panel button button-dark">关闭</a></p>
+		</div>
+		  </div>
+		{{else if !user}}
+		<div class="content-block">
+		  <p><a href="/login" class="button">登录</a></p>
+		  <p><a href="/register" class="button">注册</a></p>
+		  <p><a href="/topics/show" class="button">关于我们</a></p>
+		  <p><a href="/topics/new" class="button">联系我们</a></p>
+		  <!-- Click on link with "close-panel" class will close panel -->
+		  <p><a href="#" class="close-panel button button-dark">关闭</a></p>
+		</div>
+		{{/if}}
+		</div>
+
+
+  <!-- 默认必须要执行$.init(),实际业务里一般不会在HTML文档里执行，通常是在业务页面代码的最后执行 -->
+  <script>$.init()</script>
+  <script src="/node_modules/jquery/dist/jquery.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  {{block 'script'}}{{/block}}
+</body>
+
+</html>

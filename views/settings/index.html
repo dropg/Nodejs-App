@@ -1,0 +1,63 @@
+{{extend '../_layouts/home.html'}}
+
+{{block 'title'}}{{'物流实验室仓库管理系统 - 基本信息'}}{{/block}}
+
+{{block 'body'}}
+<header class="bar bar-nav">
+    <a href="javascript:history.back(-1);" class="icon icon-left pull-left"></a>
+    <h1 class="title">设置</h1>
+</header>
+<br>
+<div class="content">
+	<div class="list-block">
+		<ul>
+			<li class="item-content item-link">
+				<div class="item-media"><i class="icon-f7"></i></div>
+				<div class="item-inner">
+					<div class="item-title"><a href="/settings/profile">基本信息</a></div>
+				</div>
+			</li>
+			<li class="item-content item-link">
+				<div class="item-media"><i class="icon-f7"></i></div>
+				<div class="item-inner">
+					<div class="item-title"><a href="/settings/admin">账户信息</a></div>
+				</div>
+			</li>
+			<li class="item-content item-link">
+				<div class="item-media"><i class="icon-f7"></i></div>
+				<div class="item-inner">
+					<div class="item-title"><a href="/topics/show">关于我们</a></div>
+				</div>
+			</li>
+			<li class="item-content item-link">
+				<div class="item-media"><i class="icon-f7"></i></div>
+				<div class="item-inner">
+					<div class="item-title"><a href="/topics/new">联系我们</a></div>
+				</div>
+			</li>
+			<br/>
+			{{if user}}
+			<li class="item-content item-link">
+				<div class="item-media"><i class="icon-f7"></i></div>
+				<div class="item-inner">
+					<div class="item-title"><a href="/loginout">退出</a></div>
+				</div>
+			</li>
+			{{else if !user}}
+			<li class="item-content item-link">
+				<div class="item-media"><i class="icon-f7"></i></div>
+				<div class="item-inner">
+					<div class="item-title"><a href="/login">登录</a></div>
+				</div>
+			</li>
+			<li class="item-content item-link">
+				<div class="item-media"><i class="icon-f7"></i></div>
+				<div class="item-inner">
+					<div class="item-title"><a href="/register">注册</a></div>
+				</div>
+			</li>
+			{{/if}}
+		</ul>
+	</div>
+</div>
+{{/block}}

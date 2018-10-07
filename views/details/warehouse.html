@@ -1,0 +1,25 @@
+{{extend '../_layouts/home.html'}}
+
+{{block 'title'}}{{'物理实验室仓库管理系统 - 查看详情'}}{{/block}}
+
+{{block 'body'}}
+
+<div class="content">
+    <header class="bar bar-nav">
+        <a href="/" class="icon icon-left pull-left"></a>
+        <h1 class="title">物流实验室存储中心</h1>
+    </header>
+    <div class="card demo-card-header-pic" style="margin-top:50px;">
+        <div valign="bottom" class="card-header color-white no-border no-padding">
+            <img class='card-cover' src="/public/img/warehouse-h.jpg" alt="">
+        </div>
+        <div class="card-content">
+            <div class="card-content-inner">
+                <p class="color-gray">发表于 2018/09/26</p>
+                <p style="font-size:20px;">在管理货物入库时，当货物经过识别器后，系统获取货物标签中的信息，并存储到数据库中，然后利用机器将货物打包并存放到仓库中。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/block}}

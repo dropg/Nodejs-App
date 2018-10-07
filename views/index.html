@@ -1,0 +1,55 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'物流实验室仓库管理系统 - 首页'}}{{/block}}
+
+{{block 'head'}}
+<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+{{/block}}
+
+{{block 'body'}}
+  <div class="card demo-card-header-pic">
+    <a href="/details/control"><div valign="bottom" class="card-header color-white no-border no-padding">
+      <img class='card-cover' style="width: 100%;height: 300px" src="../public/img/control.jpg" alt="">
+    </div></a>
+    <div class="card-content">
+      <div class="card-content-inner">
+        <p class="color-gray">发表于 2018/09/26</p>
+        <p>物流实验室控制中心</p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="/details/control" class="link">查看详情</a>
+    </div>
+  </div>
+  <div class="card demo-card-header-pic">
+    <a href="/details/warehouse"><div valign="bottom" class="card-header color-white no-border no-padding">
+      <img class='card-cover' src="../public/img/warehouse.jpg" alt="">
+    </div></a>
+    <div class="card-content">
+      <div class="card-content-inner">
+        <p class="color-gray">发表于 2018/09/26</p>
+        <p>物流实验室存储仓库</p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="/details/warehouse" class="link">查看详情</a>
+    </div>
+  </div>
+  <div class="card demo-card-header-pic">
+    <a href="/details/transform"><div valign="bottom" class="card-header color-white no-border no-padding">
+      <img class='card-cover' src="../public/img/transform.jpg" alt="">
+    </div></a>
+    <div class="card-content">
+      <div class="card-content-inner">
+        <p class="color-gray">发表于 2018/09/26</p>
+        <p>物流实验室传输中心</p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="/details/transform" class="link">查看详情</a>
+    </div>
+  </div>
+</div>
+{{/block}}

@@ -1,0 +1,58 @@
+{{extend '../_layouts/home.html'}}
+
+{{block 'title'}}{{'物流实验室仓库管理系统 - 基本信息'}}{{/block}}
+
+{{block 'body'}}
+<section class="container">
+  <header class="bar bar-nav">
+    <a href="javascript:history.back(-1);" class="icon icon-left pull-left"></a>
+    <h1 class="title">基本信息</h1>
+  </header>
+
+  <div class="col-md-5" style="margin-top: 50px">
+  {{if user}}
+  <form id="login_form">
+	  <div class="form-group">
+		<label >账号</label>
+		<input type="email" value="{{user.email}}" name="email" class="form-control" readonly>
+	  </div>
+	  <div class="form-group">
+		<label >昵称</label>
+		<input type="text" value="{{user.nickname}}" class="form-control" name="nickname" readonly>
+	  </div>
+	   <div class="form-group">
+		<label>自我介绍</label>
+		<textarea type="text" placeholder="{{user.self_introdution}}" class="form-control" name="self_introdution"></textarea>
+	  </div>
+	  <button type="submit" class="btn btn-success btn-block">保存</button>
+	  <button type="reset" class="btn btn-success btn-block">重置</button>
+	</form>
+	{{else if !user}}
+		登录后才能查看信息！
+	{{/if}}
+  </div>
+  <script>
+   $('#login_form').on('submit', function (e) {
+      e.preventDefault()
+      var formData = $(this).serialize();
+      $.ajax({
+        url: '/settings/profile',
+        type: 'post',
+        data: formData,
+        dataType: 'json',
+        success: function (data) {
+          var err_code = data.err_code
+          if (err_code === 0) {
+            // window.alert('注册成功！')
+            // 服务端重定向针对异步请求无效
+              window.location.href = '/login'
+          } else if (err_code === 500) {
+            window.alert('服务器忙，请稍后重试！')
+          }
+        }
+      })
+    })
+	</script>
+</section>
+
+{{/block}}
